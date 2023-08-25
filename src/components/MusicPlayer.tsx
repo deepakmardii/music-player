@@ -63,15 +63,11 @@ const MusicPlayer: React.FC = () => {
 
   const playSelectedFile = (song: Song) => {
     if (audioRef.current) {
-      if (selectedFile === song && isPlaying) {
-        audioRef.current.pause();
-        setIsPlaying(false);
-      } else {
-        audioRef.current.src = `/music/${song.fileName}`;
-        audioRef.current.load();
-        setIsPlaying(true);
-        setSelectedFile(song);
-      }
+      audioRef.current.src = `/music/${song.fileName}`;
+      audioRef.current.load();
+      audioRef.current.play();
+      setIsPlaying(true);
+      setSelectedFile(song);
     }
   };
 
